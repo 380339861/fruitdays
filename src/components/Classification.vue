@@ -3,25 +3,31 @@
 		<div id="fruitday-category">
 			<!--左侧列表索引-->
 			<ul class="tab" @click="active()">  
-				<li v-for="item in category" :data-id="item.id">
-					<router-link to="">{{item.name}}</router-link>
-				</li>
+				<li class="active" data-id="303">果园优选</li>  
+				<li class="" data-id="356">新年礼盒</li>  
+				<li class="" data-id="18">新鲜水果</li>  
+				<li class="" data-id="11">水产海鲜</li>  
+				<li class="" data-id="12">肉禽蛋类</li>  
+				<li class="" data-id="14">乳品速食</li>  
+				<li class="" data-id="17">时令鲜蔬</li>  
+				<li class="" data-id="16">粮油干货</li>  
+				<li class="" data-id="126">礼盒券卡</li>  
+				<li class="" data-id="135">果园周边</li>  
 			</ul>
 			<!--右侧列表-->
 			<div class="items">
 				<div class="item">
-					<h3>{{List_title.name}}</h3>
-					<a href="#">
+					<h3>果园优选</h3>
+					<a href="./category-list.html?class2_id=310">
 						全部 
 						<i class="iconfont icon-morehome"> > </i>
 					</a>
-					<dl v-for="list in List_goods">
+					<dl>
 						<router-link to="/">
-							<dt><img :src="list.class_photo"/></dt>
-							<dd>{{list.name}}</dd>
+							<dt></dt>
+							<dd></dd>
 						</router-link>
 					</dl>
-					
 				</div>
 			</div>
 			
@@ -37,15 +43,11 @@
 
 
 <script >
-import axios from 'axios'
 export default{
 	name : "list",
 	data : function(){
 		return {
-			category : [],
-			List_title : [],
-			List_goods : [],
-			id : 303
+			
 		}
 	},
 	methods : {
@@ -53,41 +55,24 @@ export default{
 		active : function(evt){
 			var e = evt || window.event;
 			var target = e.target || e.srcElement;
-			var lis = target.parentNode.parentNode.children;
+			var lis = target.parentNode.children;
 			for(var i =0;i<lis.length;i++){
 				lis[i].setAttribute("class","");
 			}
-			var als = target.parentNode;
-			if(als.nodeName.toUpperCase() == "LI"){
+//			console.log();
+			if(target.nodeName.toUpperCase() == "LI"){
 //				console.log(target);
-				als.setAttribute("class","active");
-				this.id = als.getAttribute("data-id");
-//				console.log(als.getAttribute("data-id"));
-//				console.log(this.id);
-				this.axio();
+				target.setAttribute("class","active");
 			}
-		},
-		axio : function(id){
-			axios.get(`/v3/product/category_list?store_id_list=3&class_id=${this.id}`)
-		  .then((response)=>{
-		  	this.category = response.data.data.classOneGroup;
-		  	this.List_title = response.data.data.childrenList[0].class2Name;
-		  	this.List_goods = response.data.data.childrenList[0].class3Group;
-		    console.log(response.data.data.childrenList[0].class3Group);
-		  })
-		  .catch(function (error) {
-		    console.log(error);
-		  });
 		}
-	},
-	mounted : function(){
-		this.axio();
 	}
 }
 </script>
 
 <style scoped>
-
+li{
+	list-style: none;
+}
 #fruitday-category{
 	width: 100%;
 }
@@ -102,7 +87,7 @@ export default{
     overflow-y: auto;
     height: calc(100% - 88px);
 }
-.category ul li{
+.category ul li {
     height: 42px;
     width: 80px;
     line-height: 46px;
@@ -110,12 +95,6 @@ export default{
     color: #3a3a3a;
     border: 2px solid #f5f5f5;
     border-right: 0;
-}
-.category ul li a{
-	display: block;
-	width: 100%;
-	height: 100%;
-	color: #3a3a3a;
 }
 .category ul li.active{
     border-left: 2px solid #65a032;
@@ -151,7 +130,6 @@ export default{
     margin-left: 80px;
     padding: 10px 10px 18px 10px;
     position: relative;
-    overflow:hidden;
 }
 .item h3{
     font-weight: normal;
@@ -176,21 +154,5 @@ export default{
     display: inline-block;
     width: 10px;
     font-size: 12px;
-}
-.category .item dl{
-    width: 33%;
-    float: left;
-    text-align: center;
-    padding-bottom: 20px;
-}
-.category .item dt{
-	padding:0 10px;
-}
-.category .item dt img{
-	width: 100%;
-}
-.category .item dd{
-	font-size: 13px;
-    color: #3a3a3a;
 }
 </style>

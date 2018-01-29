@@ -1,7 +1,7 @@
 <template>
   <div id="app">
   		<router-view  class="content" />
-    	<Footer class="botom"></Footer>
+    	<Footer></Footer>
   </div>
 </template>
 
@@ -39,8 +39,5 @@ a {
 }
 .content {
   flex: 1;
-}
-.botom{
-	z-index: 999999;
 }
 </style>

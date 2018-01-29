@@ -38,7 +38,7 @@
 </template>
 
 <script>
-import Swiper from 'swiper'
+import Swiperz from 'swiper'
 import axios from 'axios'
 export default{
 	name : "reman",
@@ -65,7 +65,7 @@ export default{
 //		    	this.j++;
 //		    }
 		    this.$nextTick(function(){
-		    	var swiper = new Swiper('.swiper-container', {
+		    	var swiper = new Swiperz('.swiper-container', {
 		     	 	slidesPerView: 3,
 		     		spaceBetween: 30,
 	   			});

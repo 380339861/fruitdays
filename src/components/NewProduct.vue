@@ -33,7 +33,7 @@
 </template>
 
 <script>
-import Swiper from 'swiper'
+import Swiperq from 'swiper'
 import axios from 'axios'
 export default{
 	name : "reman",
@@ -50,7 +50,7 @@ export default{
 		    this.goodlist = response.data.data.banner.mainBanners[8].content[0]
 		    this.swiper_slider = response.data.data.banner.mainBanners[9].content
 		    this.$nextTick(function(){
-		    	var swiper = new Swiper('.swiper-container', {
+		    	var swiper = new Swiperq('.swiper-container', {
 		     	 	slidesPerView: 3,
 		     		spaceBetween: 30,
 	   			});

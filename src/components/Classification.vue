@@ -70,7 +70,9 @@ export default{
 </script>
 
 <style scoped>
-
+li{
+	list-style: none;
+}
 #fruitday-category{
 	width: 100%;
 }

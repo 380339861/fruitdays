@@ -5,7 +5,7 @@
 		</div>
 		<div class="goods" v-for="item in goodlist">
 			<div class="goodimg">
-				<img :src="item.image"/>
+				<img  v-lazy="item.image"/>
 			</div>
 			<div class="goods-list">
 				<h2>{{item.title}}</h2>
@@ -21,6 +21,7 @@
 </template>
 
 <script>
+import { Lazyload } from 'mint-ui';	
 import axios from 'axios';
 export default{
 	name : "mintui",
@@ -65,6 +66,7 @@ export default{
 .goodimg img{
 	width: 100%;
 	height: 100%;
+	min-height: 120px;
 }
 .goods-list{
 	width: 193px;

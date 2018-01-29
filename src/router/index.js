@@ -3,7 +3,6 @@ import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
 import Classification from '@/components/Classification'
 
-
 Vue.use(Router)
 
 export default new Router({

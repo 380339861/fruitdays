@@ -1,24 +1,42 @@
 <template>
-  <div id="app">
-  		<router-view  class="content" />
-    	<Footer></Footer>
-  </div>
+		<mt-loadmore :top-method="loadTop" :bottom-method="loadBottom" ref="loadmore">
+		  	<div id="app">
+		  		<router-view  class="content" />
+		    	<Footer></Footer>
+		 	 </div>
+		</mt-loadmore> 
 </template>
 
 <script>
 import Header from './components/Header'
 import Footer from './components/Footer'
-
+import { Loadmore } from 'mint-ui';
+import { Toast } from 'mint-ui';
 export default {
   name: 'App',
   components:{
   	Header,
   	Footer,
+  },
+  methods:{
+    loadTop() {
+    	Toast('(,,•́ . •̀,,)拼命加载中');
+      console.log("loadTop");
+      setTimeout(() => {
+        Toast('数据重新加载完成');
+        this.$refs.loadmore.onTopLoaded();
+      }, 3200)
+    },
+    loadBottom() {
+      
+    },
+    allLoaded(){}
   }
 }
 </script>
 
 <style>
+
 @import "assets/iconfont.css";	
 *{
 	margin: 0;

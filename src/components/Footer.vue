@@ -1,10 +1,10 @@
 <template>
 	<div class="nav">
       <router-link to="/" class="bottom-iconfont"><i class="iconfont icon-home"></i><p>首页</p></router-link>
-      <router-link to="/" class="bottom-iconfont"><i class="iconfont icon-leimupinleifenleileibie"></i><p>分类</p></router-link>
+      <router-link to="/Classification" class="bottom-iconfont"><i class="iconfont icon-leimupinleifenleileibie"></i><p>分类</p></router-link>
       <router-link to="/" class="bottom-iconfont"><i class="iconfont icon-gouwuche"></i><p>购物车</p></router-link>
       <router-link to="/" class="bottom-iconfont"><i class="iconfont icon-wode"></i><p>我的果园</p></router-link>
-	 </div>
+	</div>
 </template>
 
 <script>
@@ -23,7 +23,7 @@ export default {
 	padding: 0;
 }
 .nav {
-	width: 100%;
+  width: 100%;
   height: 42px;
   display: flex;
   flex-direction: row;
@@ -32,6 +32,7 @@ export default {
   position: fixed;
   bottom: -1px;
   background: white;
+  z-index: 1;
 }
 .nav a {
   flex: 1;

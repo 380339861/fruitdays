@@ -79,7 +79,7 @@ export default {
 	z-index: 999;
 }
 .header-left{
-	width: 278px;
+	width: 100%;
 	height: 39px;
 	line-height: 39px;
 	margin-left: 20px;

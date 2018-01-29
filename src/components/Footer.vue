@@ -23,7 +23,7 @@ export default {
 	padding: 0;
 }
 .nav {
-	width: 100%;
+width: 100%;
   height: 42px;
   display: flex;
   flex-direction: row;

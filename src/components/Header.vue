@@ -79,13 +79,16 @@ export default {
 	z-index: 999;
 }
 .header-left{
-	width: 278px;
+	width: 100%;
 	height: 39px;
 	line-height: 39px;
 	margin-left: 20px;
 }
+.header-right{
+	float: right;
+}
 .sanjiao{
-		width:0;
+	width:0;
     height:0;
     border-width:5px;
     border-style:solid dashed dashed dashed;
@@ -131,11 +134,11 @@ export default {
 	align-items: center;
 }
 .section-left{
-	width: 175px;
+	width: 49%;
 	height: 85px;
 }
 .section-right{
-	width: 175px;
+	width: 49%;
 	height: 85px;
 }
 .section-left img{

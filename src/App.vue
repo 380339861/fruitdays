@@ -38,6 +38,7 @@ export default {
 <style>
 
 @import "assets/iconfont.css";	
+@import 'assets/css/public.css';
 *{
 	margin: 0;
 	padding: 0;

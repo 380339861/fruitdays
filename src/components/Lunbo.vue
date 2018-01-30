@@ -4,7 +4,7 @@
 	      <mt-swipe-item v-for="item in list">
 	        <img :src="item.image" />
 	      </mt-swipe-item>
-	  </mt-swipe>
+	  	</mt-swipe>
 	</div>
 </template>
 

@@ -3,7 +3,7 @@
       <router-link to="/" class="bottom-iconfont"><i class="iconfont icon-home"></i><p>首页</p></router-link>
       <router-link to="/Classification" class="bottom-iconfont"><i class="iconfont icon-leimupinleifenleileibie"></i><p>分类</p></router-link>
       <router-link to="/" class="bottom-iconfont"><i class="iconfont icon-gouwuche"></i><p>购物车</p></router-link>
-      <router-link to="/Login" class="bottom-iconfont"><i class="iconfont icon-wode"></i><p>我的果园</p></router-link>
+      <router-link :to="urluser" class="bottom-iconfont"><i class="iconfont icon-wode"></i><p>我的果园</p></router-link>
 	</div>
 </template>
 
@@ -12,7 +12,15 @@ export default {
   name: 'Footer',
   data () {
     return {
+    	urluser:"/Login",
     }
+  },
+  mounted(){
+	if(this.$store.state.username !=""){
+		this.urluser = "/User"
+	}else{
+		this.urluser = "/Login"
+	}
   }
 }
 </script>

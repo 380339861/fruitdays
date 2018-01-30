@@ -14,6 +14,7 @@
 		  			<i class="iconfont icicon-sousuo">&#xe650;</i>
 		  		</div>
 		  </div>
+	<mt-loadmore :top-method="loadTop" :bottom-method="loadBottom" ref="loadmore">	  
 <!-----------------------轮播------------------>
 			<Lunbo class="lunbo"></Lunbo>
 <!-----------------------中间广告------------------>			
@@ -28,11 +29,13 @@
 			<div class="section-bottom">
 				<img src="https://imgjd7.fruitday.com/images/2018-01-22/2c15f7f76f8b2bb8249947051e1772b3.gif"/>
 			</div>
+	 		
 <!-----------------------bottom------------------>					
 			<Selling></Selling>
 			<NewProduct></NewProduct>
 			<HighQuality></HighQuality>
 			<Sentiment></Sentiment>
+	</mt-loadmore>		
 	</div>
 </template>
 
@@ -42,6 +45,8 @@ import Sentiment from './Sentiment'
 import Selling from './Selling'
 import NewProduct from './NewProduct'
 import HighQuality from './HighQuality'
+import { Loadmore } from 'mint-ui';
+import { Toast } from 'mint-ui';
 export default {
   name: 'Header',
   data () {
@@ -54,6 +59,20 @@ export default {
   	Selling,
   	NewProduct,
   	HighQuality
+  },
+  methods:{
+  	loadTop() {
+    	Toast('(,,•́ . •̀,,)拼命加载中');
+      console.log("loadTop");
+      setTimeout(() => {
+        Toast('数据重新加载完成');
+        this.$refs.loadmore.onTopLoaded();
+      }, 3200)
+    },
+    loadBottom() {
+      
+    },
+    allLoaded(){}
   }
 }
 </script>
@@ -101,6 +120,7 @@ export default {
 .logo img{
 	width: 100%;
 	height: 100%;
+	margin-top: 22%;
 }
 .map{
 	float: left;

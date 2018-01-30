@@ -2,8 +2,10 @@
 	<section class="container category">
 		<div id="fruitday-category">
 			<!--左侧列表索引-->
+
 			<ul class="tab">  
 				<li v-for="item in category" :data-id="item.id"  @click="active()">
+
 					<router-link to="">{{item.name}}</router-link>
 				</li>
 			</ul>
@@ -57,6 +59,7 @@ export default{
 			for(var i =0;i<lis.length;i++){
 				lis[i].setAttribute("class","");
 			}
+			console.log(target)
 			var als = target.parentNode;
 			if(als.nodeName.toUpperCase() == "LI"){
 //				console.log(target);
@@ -73,7 +76,7 @@ export default{
 		  	this.category = response.data.data.classOneGroup;
 		  	this.List_title = response.data.data.childrenList[0].class2Name;
 		  	this.List_goods = response.data.data.childrenList[0].class3Group;
-		    console.log(response.data.data.childrenList[0].class3Group);
+//		    console.log(response.data.data.childrenList[0].class3Group);
 		  })
 		  .catch(function (error) {
 		    console.log(error);

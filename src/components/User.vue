@@ -1,8 +1,9 @@
 <template>
 	<div id="div">
     	<div class="mc_userheader">
+    		
     		<img src="https://wap.fruitday.com/content/images/me/old_v0.png" />
-    		<p>18335450635</p>
+    		<p>{{$store.state.username}}</p>
     		<h6>签到送好礼</h6>
     		<i class="iconfont icon-erweima"></i>
     		<span>会员码</span>
@@ -45,19 +46,48 @@
     				<i class="iconfont icon-dingdan"></i>
     				<p>在线客服</p>
     			</div>
-    		
+    			<div class="mc_one">
+    				<i class="iconfont icon-dingdan"></i>
+    				<p>帮助</p>
+    			</div>
+    			<div class="mc_one">
+    				<i class="iconfont icon-dingdan"></i>
+    				<p>个人资料</p>
+    			</div>
+    			<div class="tuichu mc_one" @click="downBtn">
+    				<i class="iconfont icon-dingdan"></i>
+    				<p>退出登录</p>
+    			</div>
     		</div>	
     		
     	</div>
 </template>
 
 <script>
+export default {
+  name: 'User',
+  data () {
+    return {
+    }
+  },
+  methods:{
+  	downBtn:function(){
+  		this.$store.state.username =""
+  		this.$router.push({path:'/Login'})
+  	}
+  },
+  mounted(){
+  	
+	
+  }
+}
+	
+	
 </script>
 
 <style scoped>
 @import url("//at.alicdn.com/t/font_491734_5q9bhssv2t9.css");
-
-.mc_userheader{width: 100%;height: 190px;background: url(https://wap.fruitday.com/content/images/me/login-bg.png) no-repeat fixed 0 0;background-size: 100% auto;color: #000000;}
+.mc_userheader{width: 100%;height: 190px;background: url(https://wap.fruitday.com/content/images/me/login-bg.png) no-repeat fixed 0 0;background-size: 100% auto;color: #000000}
 .mc_userheader img{height: 18px;padding-left: 50px;margin-top: 70px;}
 .mc_userheader>p{font-size: 18px;margin-left: 80px;margin-top: -48px;}
 .mc_userheader h6{font-size: 10px; height: 16px;width: 70px;background-color:#ff8000 ;line-height: 18px;border-radius: 10px;color: #fff;text-align: center;margin-left: 80px;margin-top: 10px;}

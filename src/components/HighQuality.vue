@@ -15,7 +15,7 @@
 			<div class="section has-recommend">
 				<div class="swiper-container swiper-container-horizontal swiper-container-wp8-horizontal">
 				    <div class="swiper-wrapper" style="transition-duration: 0ms; transform: translate3d(0px, 0px, 0px);">
-				        <router-link :to="{name : 'Detail',params:{fid: listSlider.target_id}}" class="swiper-slide swiper-slide-prev" v-for="listSlider in swiper_slider">
+				        <a class="swiper-slide swiper-slide-prev" v-for="listSlider in swiper_slider">
 					      	<div class="img-box">
 					      		<img :src="listSlider.image"/>
 					      	</div>
@@ -27,7 +27,7 @@
 					      		<span class="money">￥{{listSlider.price}}/<em>{{listSlider.volume}}</em></span> 
 					      		<i class="iconfont icon-jiahao icon-searchplus"></i> 
 					      	</div>
-				        </router-link>
+				        </a>
 				    </div>
 				</div>
 			</div>

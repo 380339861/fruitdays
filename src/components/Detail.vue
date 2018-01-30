@@ -25,13 +25,13 @@
 		</nav>
 		<!--Section-->
 		<div class="container good-detail">
-			<div id="good-detail" class="tab-box good">
+			<div id="good-detail" class="tab-box good" v-if="obj">
 				<!--轮播-->
 				<mt-swipe :auto="4000">
 			      <mt-swipe-item v-for="item in list">
 			        <img :src="item.image" />
 			      </mt-swipe-item>
-			      <span class="tag">{{obj.sale.promotion_tag}}</span>
+			      <span class="tag"></span>
 			  	</mt-swipe>
 			  	
 			  	<!--详情-->
@@ -114,7 +114,7 @@ export default{
 	data : function(){
 		return {
 			list: [],
-			obj : [],
+			obj : null,
 			num : [],
 			evte : [],
 		}

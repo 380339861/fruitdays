@@ -17,8 +17,8 @@
 						全部 
 						<i class="iconfont icon-morehome"> > </i>
 					</a>
-					<dl v-for="list in List_goods">
-						<router-link to="/">
+					<dl @click="disfa(list.class2Id,list.id)" v-for="list in List_goods">
+						<router-link :to="{name : 'ListTwo',params:{fid: faid}}">
 							<dt><img :src="list.class_photo"/></dt>
 							<dd>{{list.name}}</dd>
 						</router-link>
@@ -47,7 +47,8 @@ export default{
 			category : [],
 			List_title : [],
 			List_goods : [],
-			id : 303
+			id : 303,
+			faid : null
 		}
 	},
 	methods : {
@@ -76,7 +77,22 @@ export default{
 		  	this.category = response.data.data.classOneGroup;
 		  	this.List_title = response.data.data.childrenList[0].class2Name;
 		  	this.List_goods = response.data.data.childrenList[0].class3Group;
-//		    console.log(response.data.data.childrenList[0].class3Group);
+		    
+		    console.log(response.data.data.childrenList[0].class3Group);
+		  })
+		  .catch(function (error) {
+		    console.log(error);
+		  });
+		},
+		disfa : function(class2Id,id){
+//			console.log(class2Id,id);
+			this.disone(class2Id,id);
+		},
+		disone : function(class2Id,id){
+			axios.get(`/v3/product/sub_category_list?store_id_list=3&class2_id=${class2Id}&class3_id=${id}&sort_type=1&tms_region_type=1`)
+		  .then((response)=>{
+//		    console.log(response.data.data.productGroup[0].id);
+		    this.faid = response.data.data.productGroup[0].id;
 		  })
 		  .catch(function (error) {
 		    console.log(error);

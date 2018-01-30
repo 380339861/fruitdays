@@ -5,7 +5,7 @@ import Classification from '@/components/Classification'
 import Detail from '@/components/Detail'
 import Login from '@/components/Login'
 import User from '@/components/User'
-
+import ListTwo from '@/components/ListTwo'
 
 Vue.use(Router)
 
@@ -30,12 +30,16 @@ export default new Router({
       path: '/Login',
       name: 'Login',
       component: Login
-    }
-    ,
+    },
     {
       path: '/User',
       name: 'User',
       component: User
+    },
+    {
+      path: '/listtwo:fid',
+      name: 'ListTwo',
+      component: ListTwo
     }
   ]
 })

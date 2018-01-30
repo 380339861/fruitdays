@@ -13,7 +13,7 @@
 				</ul>
 			</div>
 			<div class="more">
-				<i class="iconfont icon-gengduo"></i>
+				<i class="iconfont icon-gengduo-tianchong"></i>
 				<div class="more-bubble">
 					<a href="/">
 						<i class="iconfont icon-homedefault"></i>首页</a> 
@@ -139,7 +139,7 @@ export default{
 		evaluate : function(id){
 			axios.get(`/v3/comment/rate_and_comment?product_id=${id}`)
 		  .then((response)=>{
-		    console.log(response);
+//		    console.log(response);
 		    this.num = response.data.data.num;
 		    this.evte = response.data.data.data;
 		  })

@@ -13,7 +13,7 @@
 				</ul>
 			</div>
 			<div class="more">
-				<i class="iconfont icon-gengduo"></i>
+				<i class="iconfont icon-gengduo-tianchong"></i>
 				<div class="more-bubble">
 					<a href="/">
 						<i class="iconfont icon-homedefault"></i>首页</a> 

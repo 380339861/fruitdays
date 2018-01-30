@@ -4,20 +4,21 @@
 		<div class="tou">
 			<i class="iconfont icon-jiantou"></i>
 			<p>手机号快捷登录</p>
+			{{$store.state.username}}
 		</div>
 		
 		<div class="reg">
 			<li>
 				<i class="iconfont icon-shouji1"></i>
-				<input type="number" placeholder="手机号" />
-				<button>获取验证码</button>
+				<input type="number" placeholder="手机号" v-model="username"/>
+				<button @click="Loginbtn">获取验证码</button>
 			</li>
 			<li>
 				<i class="iconfont icon-yuechi"></i>
-				<input type="number" placeholder="短信验证码" />
+				<input type="number" placeholder="短信验证码" v-model="pwd"/>
 			</li>
 			<p class="p1">首次用手机号登陆将自动为您注册，并有豪礼相送。</p>
-			<input type="button" value="登陆" />
+			<input type="button" value="登陆" @click="upLogin"/>
 			<p class="p2">账户密码登录</p>
 			<p class="p3">未收到验证码？</p>
 		</div>
@@ -26,12 +27,57 @@
 </template>
 
 <script>
+import axios from "axios"
+export default{
+	name : "Login",
+	data : function(){
+		return {
+			username:"",
+			pwd:""
+		}
+	},
+	mounted : function(){
+		
+	},
+	methods:{
+		Loginbtn:function(){
+			console.log(this.username)
+			axios.get(`v3/passport/send_vercode?mobile=${this.username}&user_case=`)
+		  .then((response)=>{
+		    console.log("登录"+response);
+		  })
+		  .catch(function (error) {
+		    console.log(error);
+		  });
+		},
+//		登录
+		upLogin:function(){
+			console.log(this.username)
+			console.log(this.pwd)
+			axios.get(`v3/passport/mobile_vercode_login?mobile=${this.username}&vercode=${this.pwd}&connect_id=3229ijfiikoa29sica7manvc31`)
+		  .then((response)=>{
+		  	console.log(response)
+		    alert(response.data.msg);
+		    if(response.data.code == "200"){
+		    	this.$store.state.username = response.data.data.userinfo.username
+		    	console.log(this.$router)
+		    	this.$router.push({path:'/User'})
+		    	this.$store.dispatch("setUserNameA", response.data.data.userinfo.username);
+		    }
+		  })
+		  .catch(function (error) {
+		    console.log(error);
+		  });
+		}
+		
+	}
+}	
 </script>
 
 <style scoped>
 @import url("//at.alicdn.com/t/font_491734_5q9bhssv2t9.css");
 	
-#reg{width: 100%;height: 190px;background: url(https://wap.fruitday.com/content/images/me/login-bg.png) no-repeat fixed 0 0;background-size: 100% auto;color: #000000;}
+#reg{width: 100%;height: 100%;background: url(https://wap.fruitday.com/content/images/me/login-bg.png) no-repeat fixed 0 0;background-size: 100% auto;color: #000000;padding-bottom: 5rem;}
 li{list-style: none;}
 
 .tou{height: 50px;color: #75a739;font-size: 20px;line-height: 50px;}

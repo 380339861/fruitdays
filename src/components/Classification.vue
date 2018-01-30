@@ -2,8 +2,10 @@
 	<section class="container category">
 		<div id="fruitday-category">
 			<!--左侧列表索引-->
-			<ul class="tab" >  
-				<li @click="active()" v-for="item in category" :data-id="item.id">
+
+			<ul class="tab">  
+				<li v-for="item in category" :data-id="item.id"  @click="active()">
+
 					<router-link to="">{{item.name}}</router-link>
 				</li>
 			</ul>

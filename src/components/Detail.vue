@@ -13,13 +13,13 @@
 				</ul>
 			</div>
 			<div class="more">
-				<i class="iconfont icon-gengduo-tianchong"></i>
-				<div class="more-bubble">
-					<a href="/">
-						<i class="iconfont icon-homedefault"></i>首页</a> 
+				<i @click="Eject()" class="iconfont icon-gengduo-tianchong"></i>
+				<div v-if="flag" class="more-bubble">
+					<router-link to="/">
+						<i class="iconfont icon-homedefault"></i>首页</router-link> 
 					<a href="javascript:;" class="search">
 						<i class="iconfont icon-searchpage"></i>搜索</a> 
-					<a href="./category.html"><i class="iconfont icon-kinddefault"></i>分类</a>
+					<router-link to="/Classification"><i class="iconfont icon-kinddefault"></i>分类</router-link>
 				</div>
 			</div>
 		</nav>
@@ -117,6 +117,7 @@ export default{
 			obj : null,
 			num : [],
 			evte : [],
+			flag : false,
 		}
 	},
 	mounted : function(){
@@ -146,6 +147,9 @@ export default{
 		  .catch(function (error) {
 		    console.log(error);
 		  });
+		},
+		Eject : function(){
+			this.flag = !this.flag;
 		}
 	}
 }
@@ -179,6 +183,9 @@ export default{
     line-height: 25px;
     color: #fff;
     z-index: 10;
+}
+.active{
+	display: block;
 }
 .details{
 	width: 375px;
@@ -249,7 +256,6 @@ nav .more .iconfont, nav .next .iconfont{
     font-size: 20px;
 }
 nav .more>.more-bubble {
-    display: none;
     top: 45px;
     right: 0;
     bottom: auto;
@@ -262,6 +268,16 @@ nav .more>.more-bubble {
     animation-duration: .3s;
     animation-timing-function: linear;
     z-index: 91;
+}
+nav .more>.more-bubble:before {
+    content: ' ';
+    top: -14px;
+    right: 0;
+    bottom: auto;
+    left: auto;
+    position: absolute;
+    border: 7px solid;
+    border-color: transparent rgba(0,0,0,.75) rgba(0,0,0,.75) transparent;
 }
 nav .more>.more-bubble>a {
     display: block;
@@ -319,6 +335,7 @@ nav .more>.more-bubble>a:last-child{
     background: #ff8000;
     color: #fff;
 }
+
 .good-detail .good .info-item .size>span {
     display: inline-block;
     min-width: 50px;

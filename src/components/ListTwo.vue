@@ -52,6 +52,10 @@
     			<em></em>  
         	</router-link>
         </div>
+        <a class="cart-btn" href="./cart.html" style="display: inline;">
+	        <i class="iconfont icon-gouwuche"></i> 
+	        <span id="cart-num"></span>
+        </a>
 	</div>
 </template>
 
@@ -336,5 +340,36 @@ nav .more .iconfont, nav .next .iconfont {
     line-height: 20px;
     font-size: 22px;
     background: #fff;
+}
+.category-list .cart-btn {
+    display: none;
+    top: auto;
+    right: auto;
+    bottom: 5px;
+    left:  5px;
+    position: fixed;
+    background: #65a032;
+    text-align: center;
+    color: #fff;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    border-radius: 100%;
+}
+.category-list .cart-btn i {
+    font-size: 25px;
+}
+.category-list .cart-btn span {
+    position: absolute;
+    background: #ff8000;
+    line-height: 14px;
+    border-radius: 15px;
+    min-width: 14px;
+    padding: 0 2px;
+    top: 3px;
+    right: auto;
+    bottom: auto;
+    left: 35px;
+    font-size: 10px;
 }
 </style>

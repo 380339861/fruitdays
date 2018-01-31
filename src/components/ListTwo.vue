@@ -7,13 +7,13 @@
 				</div> 
 				<div class="text">{{fatherClass.name}}</div> 
 				<a href="javascript:void(0);" class="next">
-					<i class="iconfont icon-gengduo-tianchong"></i>
+					<i style="font-size: 40px;" class="iconfont icon-sousuo"></i>
 				</a> 
 			</nav>
 			<div class="section has-recommend">
 				<div class="swiper-container swiper-container-horizontal swiper-container-wp8-horizontal">
 				    <div class="swiper-wrapper" style="transition-duration: 0ms; transform: translate3d(0px, 0px, 0px);">
-				        <div class="swiper-slide swiper-slide-prev" v-for="listSlider in swiper_slider">
+				        <div class="swiper-slide swiper-slide-prev" v-for="listSlider in swiper_slider" @click="activ(listSlider.id)">
 					      	<span>{{listSlider.name}}</span>
 				        </div>
 				    </div>
@@ -69,12 +69,15 @@ export default{
 			swiper_slider : [],
 			shoplist : [],
 			fatherClass : [],
+			class3_id : null,
 		}
 	},
-	mounted : function(){
-	    var class2_id = this.$route.params.classid;
-	    var class3_id = this.$route.params.id;
-	    axios.get(`/v3/product/sub_category_list?store_id_list=3&class2_id=${class2_id}&class3_id=${class3_id}&sort_type=1&tms_region_type=1`)
+	methods:{
+		activ : function(id){
+			this.class3_id = id;
+			var class2_id = this.$route.params.classid;
+	    	console.log(id)
+    			axios.get(`/v3/product/sub_category_list?store_id_list=3&class2_id=${class2_id}&class3_id=${this.class3_id}&sort_type=1&tms_region_type=1`)
 		  .then((response)=>{
 		    console.log(response);
 		    this.swiper_slider = response.data.data.brotherClass;
@@ -91,6 +94,11 @@ export default{
 		  .catch(function (error) {
 		    console.log(error);
 		  });
+		}
+	},
+	mounted : function(){
+		this.class3_id = this.$route.params.id;
+	    this.activ(this.class3_id);
 	}
 }
 </script>

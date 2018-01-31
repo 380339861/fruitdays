@@ -4,21 +4,21 @@
 			<!--左侧列表索引-->
 
 			<ul class="tab">  
-				<li v-for="item in category" :data-id="item.id"  @click="active()">
+				<li ref="defau" v-for="item in category" :data-id="item.id"  @click="active()">
 
 					<router-link to="">{{item.name}}</router-link>
 				</li>
 			</ul>
 			<!--右侧列表-->
 			<div class="items">
-				<div class="item" v-for="list in arr">
-					<h3>{{list.class2Name.name}}</h3>
+				<div class="item" v-for="item in arr">
+					<h3>{{item.class2Name.name}}</h3>
 					<a href="#">
 						全部 
 						<i class="iconfont icon-morehome"> > </i>
 					</a>
-					<dl @click="disfa(list.class2Id,list.id)" v-for="list in list.class3Group">
-						<router-link :to="{name : 'ListTwo',params:{fid: faid}}">
+					<dl v-for="list in item.class3Group">
+						<router-link :to="{name : 'ListTwo',params:{id: item.class2Name.id}}">
 							<dt><img :src="list.class_photo"/></dt>
 							<dd>{{list.name}}</dd>
 						</router-link>
@@ -44,11 +44,10 @@ export default{
 	data : function(){
 		return {
 			category : [],
-			List_title : [],
-			List_goods : [],
 			arr : [],
 			id : 303,
-			faid : null
+			faid : null,
+			flag : true,
 		}
 	},
 	methods : {
@@ -60,14 +59,10 @@ export default{
 			for(var i =0;i<lis.length;i++){
 				lis[i].setAttribute("class","");
 			}
-			console.log(target)
 			var als = target.parentNode;
 			if(als.nodeName.toUpperCase() == "LI"){
-//				console.log(target);
 				als.setAttribute("class","active");
 				this.id = als.getAttribute("data-id");
-//				console.log(als.getAttribute("data-id"));
-//				console.log(this.id);
 				this.axio();
 			}
 		},
@@ -75,33 +70,25 @@ export default{
 			axios.get(`/v3/product/category_list?store_id_list=3&class_id=${this.id}`)
 		  .then((response)=>{
 		  	this.category = response.data.data.classOneGroup;
-		  	this.List_title = response.data.data.childrenList[0].class2Name;
-		  	this.List_goods = response.data.data.childrenList[0].class3Group;
-		  	this.arr = response.data.data.childrenList
-		    
-		    console.log(response.data.data.childrenList[0].class3Group);
+		  	this.arr = response.data.data.childrenList;
+		  	if(this.flag==true){
+		  		this.$nextTick(function(){
+					this.$refs.defau[0].setAttribute("class","active");
+					console.log(this.$refs.defau[0]);
+				});
+				this.flag = false;
+		  	}
+			
 		  })
 		  .catch(function (error) {
 		    console.log(error);
 		  });
 		},
-		disfa : function(class2Id,id){
-//			console.log(class2Id,id);
-			this.disone(class2Id,id);
-		},
-		disone : function(class2Id,id){
-			axios.get(`/v3/product/sub_category_list?store_id_list=3&class2_id=${class2Id}&class3_id=${id}&sort_type=1&tms_region_type=1`)
-		  .then((response)=>{
-//		    console.log(response.data.data.productGroup[0].id);
-		    this.faid = response.data.data.productGroup[0].id;
-		  })
-		  .catch(function (error) {
-		    console.log(error);
-		  });
-		}
 	},
 	mounted : function(){
 		this.axio();
+		
+		console.log(this.$refs);
 	}
 }
 </script>

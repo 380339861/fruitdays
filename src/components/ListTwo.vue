@@ -46,7 +46,7 @@
     			<div class="count">
     				<span class="num" style="display: none;">1</span>
     				<span data-id="27150" class="plus">
-    					<i class="iconfont icon-searchplus"></i>
+    					<i class="iconfont icon-searchplus">+</i>
     				</span>
     			</div>   
     			<em></em>  
@@ -73,8 +73,7 @@ export default{
 		    console.log(response);
 		    this.swiper_slider = response.data.data.brotherClass;
 		    this.shoplist = response.data.data.productGroup
-		    
-		    console.log( this.swiper_slider);
+//		    console.log( this.swiper_slider);
 		    this.$nextTick(function(){
 		    	var swiper = new SwiperP('.swiper-container', {
 		     	 	slidesPerView: 4,
@@ -85,8 +84,8 @@ export default{
 		  .catch(function (error) {
 		    console.log(error);
 		  });
-		  	
-	     
+		this.$route.params.id;
+	    console.log(this.$route.params.id)
 	}
 }
 </script>
@@ -334,6 +333,7 @@ nav .more .iconfont, nav .next .iconfont {
     width: 20px;
     height: 20px;
     line-height: 20px;
+    font-size: 22px;
     background: #fff;
 }
 </style>

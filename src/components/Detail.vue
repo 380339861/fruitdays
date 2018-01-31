@@ -16,10 +16,10 @@
 				<i @click="Eject()" class="iconfont icon-gengduo-tianchong"></i>
 				<div v-if="flag" class="more-bubble">
 					<router-link to="/">
-						<i class="iconfont icon-homedefault"></i>首页</router-link> 
+						<i class="iconfont"></i>首页</router-link> 
 					<a href="javascript:;" class="search">
-						<i class="iconfont icon-searchpage"></i>搜索</a> 
-					<router-link to="/Classification"><i class="iconfont icon-kinddefault"></i>分类</router-link>
+						<i class="iconfont"></i>搜索</a> 
+					<router-link to="/Classification"><i class="iconfont"></i>分类</router-link>
 				</div>
 			</div>
 		</nav>

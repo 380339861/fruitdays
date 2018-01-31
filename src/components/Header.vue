@@ -11,7 +11,7 @@
 		  			</div>
 		  		</div>
 		  		<div class="header-right">
-		  			<i class="iconfont icicon-sousuo">&#xe650;</i>
+		  			<i class="iconfont icon-sousuo"></i>
 		  		</div>
 		  </div>
 	<mt-loadmore :top-method="loadTop" :bottom-method="loadBottom" ref="loadmore">	  
@@ -174,5 +174,8 @@ export default {
 .section-bottom img{
 	width: 100%;
 	height: 100%;
+}
+.icon-sousuo{
+	font-size: 40px;
 }
 </style>

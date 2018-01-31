@@ -11,19 +11,18 @@
 			</ul>
 			<!--右侧列表-->
 			<div class="items">
-				<div class="item">
-					<h3>{{List_title.name}}</h3>
+				<div class="item" v-for="list in arr">
+					<h3>{{list.class2Name.name}}</h3>
 					<a href="#">
 						全部 
 						<i class="iconfont icon-morehome"> > </i>
 					</a>
-					<dl @click="disfa(list.class2Id,list.id)" v-for="list in List_goods">
+					<dl @click="disfa(list.class2Id,list.id)" v-for="list in list.class3Group">
 						<router-link :to="{name : 'ListTwo',params:{fid: faid}}">
 							<dt><img :src="list.class_photo"/></dt>
 							<dd>{{list.name}}</dd>
 						</router-link>
-					</dl>
-					
+					</dl>		
 				</div>
 			</div>
 			
@@ -47,6 +46,7 @@ export default{
 			category : [],
 			List_title : [],
 			List_goods : [],
+			arr : [],
 			id : 303,
 			faid : null
 		}
@@ -77,6 +77,7 @@ export default{
 		  	this.category = response.data.data.classOneGroup;
 		  	this.List_title = response.data.data.childrenList[0].class2Name;
 		  	this.List_goods = response.data.data.childrenList[0].class3Group;
+		  	this.arr = response.data.data.childrenList
 		    
 		    console.log(response.data.data.childrenList[0].class3Group);
 		  })

@@ -13,10 +13,10 @@
 			<div class="items">
 				<div class="item" v-for="item in arr">
 					<h3>{{item.class2Name.name}}</h3>
-					<a href="#">
+					<router-link :to="{name : 'ListTwo',params:{classid: 310,id : 0}}">
 						全部 
 						<i class="iconfont icon-morehome"> > </i>
-					</a>
+					</router-link>
 					<dl v-for="list in item.class3Group">
 						<router-link :to="{name : 'ListTwo',params:{classid: item.class2Name.id,id : list.id}}">
 							<dt><img :src="list.class_photo"/></dt>
@@ -53,6 +53,7 @@ export default{
 	methods : {
 		//
 		active : function(evt){
+			
 			var e = evt || window.event;
 			var target = e.target || e.srcElement;
 			var lis = target.parentNode.parentNode.children;

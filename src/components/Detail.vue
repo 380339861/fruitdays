@@ -28,7 +28,7 @@
 			<div id="good-detail" class="tab-box good" v-if="obj">
 				<!--轮播-->
 				<mt-swipe :auto="4000">
-			      <mt-swipe-item v-for="item in list">
+			      <mt-swipe-item v-for="item in list" :key="item.id">
 			        <img :src="item.image" />
 			      </mt-swipe-item>
 			      <span class="tag"></span>

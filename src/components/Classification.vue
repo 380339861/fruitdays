@@ -66,7 +66,7 @@ export default{
 				this.axio();
 			}
 		},
-		axio : function(id){
+		axio : function(){
 			axios.get(`/v3/product/category_list?store_id_list=3&class_id=${this.id}`)
 		  .then((response)=>{
 		  	

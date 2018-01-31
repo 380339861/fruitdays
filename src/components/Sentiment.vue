@@ -3,7 +3,7 @@
 		<div class="Sentiment-top">
 			<img src="../assets/img/sectionRenqi.jpg"/>
 		</div>
-		<router-link :to="{name : 'Detail',params:{fid: item.target_id}}" class="goods" v-for="item in goodlist">
+		<router-link :to="{name : 'Detail',params:{fid: item.target_id}}" class="goods" v-for="item in goodlist" :key="item.id">
 			<div class="goodimg">
 				<img  v-lazy="item.image"/>
 			</div>

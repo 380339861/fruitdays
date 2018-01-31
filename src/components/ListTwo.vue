@@ -30,7 +30,7 @@
 			</div>
 		</header>
         <div class="listtwo" style="min-height: 541px; width: 375px;">
-        	<a class="item" href="#" v-for="item in shoplist"> 
+        	<router-link :to="{name : 'Detail',params:{fid: item.id}}" class="item" href="#" v-for="item in shoplist" :key="item.id"> 
         		<img class="good-img" :src="item.photo">  
     			<dl class=""> 
     				<dt>{{item.product_name}}</dt> 
@@ -50,8 +50,7 @@
     				</span>
     			</div>   
     			<em></em>  
-        	</a>
-        	
+        	</router-link>
         </div>
 	</div>
 </template>

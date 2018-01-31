@@ -18,7 +18,7 @@
 						<i class="iconfont icon-morehome"> > </i>
 					</a>
 					<dl v-for="list in item.class3Group">
-						<router-link :to="{name : 'ListTwo',params:{id: item.class2Name.id}}">
+						<router-link :to="{name : 'ListTwo',params:{classid: item.class2Name.id,id : list.id}}">
 							<dt><img :src="list.class_photo"/></dt>
 							<dd>{{list.name}}</dd>
 						</router-link>
@@ -69,12 +69,13 @@ export default{
 		axio : function(id){
 			axios.get(`/v3/product/category_list?store_id_list=3&class_id=${this.id}`)
 		  .then((response)=>{
+		  	
+		  	console.log(response)
 		  	this.category = response.data.data.classOneGroup;
 		  	this.arr = response.data.data.childrenList;
 		  	if(this.flag==true){
 		  		this.$nextTick(function(){
 					this.$refs.defau[0].setAttribute("class","active");
-					console.log(this.$refs.defau[0]);
 				});
 				this.flag = false;
 		  	}
@@ -87,8 +88,6 @@ export default{
 	},
 	mounted : function(){
 		this.axio();
-		
-		console.log(this.$refs);
 	}
 }
 </script>

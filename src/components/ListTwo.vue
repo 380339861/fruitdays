@@ -5,7 +5,7 @@
 				<div class="back"> 
 					<a href="javascript:history.go(-1)" class="iconfont icon-morehome">></a> 
 				</div> 
-				<div class="text">果园优选</div> 
+				<div class="text">{{fatherClass.name}}</div> 
 				<a href="javascript:void(0);" class="next">
 					<i class="iconfont icon-gengduo-tianchong"></i>
 				</a> 
@@ -65,14 +65,18 @@ export default{
 		return {
 			swiper_slider : [],
 			shoplist : [],
+			fatherClass : [],
 		}
 	},
 	mounted : function(){
-	    		axios.get('/v3/product/sub_category_list?store_id_list=3&class2_id=310&class3_id=0&sort_type=1&tms_region_type=1')
+	    var class2_id = this.$route.params.classid;
+	    var class3_id = this.$route.params.id;
+	    axios.get(`/v3/product/sub_category_list?store_id_list=3&class2_id=${class2_id}&class3_id=${class3_id}&sort_type=1&tms_region_type=1`)
 		  .then((response)=>{
 		    console.log(response);
 		    this.swiper_slider = response.data.data.brotherClass;
-		    this.shoplist = response.data.data.productGroup
+		    this.shoplist = response.data.data.productGroup;
+		    this.fatherClass = response.data.data.fatherClass
 //		    console.log( this.swiper_slider);
 		    this.$nextTick(function(){
 		    	var swiper = new SwiperP('.swiper-container', {
@@ -84,8 +88,6 @@ export default{
 		  .catch(function (error) {
 		    console.log(error);
 		  });
-		this.$route.params.id;
-	    console.log(this.$route.params.id)
 	}
 }
 </script>

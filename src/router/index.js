@@ -37,7 +37,7 @@ export default new Router({
       component: User
     },
     {
-      path: '/listtwo:id',
+      path: '/listtwo/:classid/:id:',
       name: 'ListTwo',
       component: ListTwo
     }

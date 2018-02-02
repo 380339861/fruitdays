@@ -74,6 +74,7 @@ export default {
   	downBtn:function(){
   		this.$store.state.username =""
   		this.$router.push({path:'/Login'})
+  		 location.reload(true) 
   	}
   },
   mounted(){

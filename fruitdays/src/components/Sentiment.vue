@@ -31,10 +31,10 @@ export default{
 		}
 	},
 	mounted : function(){
-		axios.get('v3/ad/homepage?connect_id=&type=0&lonlat=116.25153,40.11623&ad_code=110114&tab_id=')
+		axios.get(`${this.$store.state.goodapi}`)
 		  .then((response)=>{
 		    console.log(response);
-		    this.goodlist = response.data.data.banner.mainBanners[20].content
+		    this.goodlist = response.data.data.banner.mainBanners[21].content
 		  })
 		  .catch(function (error) {
 		    console.log(error);

@@ -15,6 +15,11 @@ module.exports = {
             target: 'https://wap.fruitday.com', //这个路径是我代理到本地的php服务器  
             changeOrigin: true, //开启代理  
             pathRewrite: { '^/v3': '/v3'}  //这里重写路径运行后就代理到对应地址  
+         },
+      '/api': {       //这里是我配置的名字  
+            target: 'http://localhost:8888', //这个路径是我代理到本地的php服务器  
+            changeOrigin: true, //开启代理  
+            pathRewrite: { '^/api': '/api'}  //这里重写路径运行后就代理到对应地址  
           }
     },
 

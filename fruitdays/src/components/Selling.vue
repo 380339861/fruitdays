@@ -6,7 +6,7 @@
 				<img src="../assets/img/Remlog.jpg"/>
 			</router-link>
 		</div>
-<!--		
+		
 		<div class="section recommends" v-for="item in goodlist">
 			<router-link to="/">
 				<div class="img_box">
@@ -21,7 +21,7 @@
 					</div> 
 				</div>
 			</router-link>
-		</div>-->
+		</div>
 		
 		<div class="section has-recommend">
 			<div class="swiper-container swiper-container-horizontal swiper-container-wp8-horizontal">
@@ -58,11 +58,11 @@ export default{
 		}
 	},
 	mounted : function(){
-	    axios.get('v3/ad/homepage?connect_id=&type=0&lonlat=116.25153,40.11623&ad_code=110114&tab_id=')
+	    axios.get(`${this.$store.state.goodapi}`)
 		  .then((response)=>{
 		    console.log(response);
 		    this.goodlist = response.data.data.banner.mainBanners[6].content
-		    this.swiper_slider = response.data.data.banner.mainBanners[6].content
+		    this.swiper_slider = response.data.data.banner.mainBanners[7].content
 		    this.$nextTick(function(){
 		    	var swiper = new Swiper('.swiper-container', {
 		     	 	slidesPerView: 3,

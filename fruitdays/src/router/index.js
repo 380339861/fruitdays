@@ -5,6 +5,7 @@ import Classification from '@/components/Classification'
 import Detail from '@/components/Detail'
 import Login from '@/components/Login'
 import User from '@/components/User'
+import Cart from '@/components/Cart'
 
 
 Vue.use(Router)
@@ -30,12 +31,17 @@ export default new Router({
       path: '/Login',
       name: 'Login',
       component: Login
-    }
-    ,
+    },
     {
       path: '/User',
       name: 'User',
       component: User
+    },
+    {
+      path: '/Cart',
+      name: 'Cart',
+      component: Cart
     }
+    
   ]
 })

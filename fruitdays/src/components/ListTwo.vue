@@ -7,7 +7,7 @@
 				</div> 
 				<div class="text">{{fatherClass.name}}</div> 
 				<a href="javascript:void(0);" class="next">
-					<i style="font-size: 40px;" class="iconfont icon-sousuo"></i>
+					<i style="font-size: 20px;" class="iconfont icon-sousuo"></i>
 				</a> 
 			</nav>
 			<div class="section has-recommend">

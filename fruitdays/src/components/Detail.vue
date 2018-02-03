@@ -13,13 +13,13 @@
 				</ul>
 			</div>
 			<div class="more">
-				<i class="iconfont icon-gengduo"></i>
-				<div class="more-bubble">
-					<a href="/">
-						<i class="iconfont icon-homedefault"></i>首页</a> 
+				<i @click="Eject()" class="iconfont icon-gengduo"></i>
+				<div v-if="flag" class="more-bubble">
+					<router-link to="/">
+						<i class="iconfont"></i>首页</router-link> 
 					<a href="javascript:;" class="search">
-						<i class="iconfont icon-searchpage"></i>搜索</a> 
-					<a href="./category.html"><i class="iconfont icon-kinddefault"></i>分类</a>
+						<i class="iconfont"></i>搜索</a> 
+					<router-link to="/Classification"><i class="iconfont"></i>分类</router-link>
 				</div>
 			</div>
 		</nav>
@@ -28,7 +28,7 @@
 			<div id="good-detail" class="tab-box good" v-if="obj">
 				<!--轮播-->
 				<mt-swipe :auto="4000">
-			      <mt-swipe-item v-for="item in list">
+			      <mt-swipe-item v-for="item in list" :key="item.id">
 			        <img :src="item.image" ref="imghref"/>
 			      </mt-swipe-item>
 			      <span class="tag"></span>
@@ -73,7 +73,7 @@
 							<i class="iconfont icon-morehome">></i>
 						</span>评价({{num.total}})
 					</div>
-					<div class="comment-con-chief" v-for="item in evte"> 
+					<div class="comment-con-chief" v-for="item in evte" :key="item.id"> 
 						<div class="comment-info"> 
 							<img class="avatar" :src="item.userface"> 
 							<span class="user">{{item.user_name}}</span> 
@@ -116,6 +116,7 @@ export default{
 			obj : null,
 			num : [],
 			evte : [],
+			flag : false,
 		}
 	},
 	mounted : function(){
@@ -164,9 +165,9 @@ export default{
 					alert(res.message)
 				}
 			}
-		    
-		    
-		    
+		},
+		Eject : function(){
+			this.flag = !this.flag;
 		}
 	}
 }
@@ -268,8 +269,17 @@ nav .more, nav .next{
 nav .more .iconfont, nav .next .iconfont{
     font-size: 20px;
 }
+nav .more>.more-bubble:before {
+    content: ' ';
+    top: -14px;
+    right: 0;
+    bottom: auto;
+    left: auto;
+    position: absolute;
+    border: 7px solid;
+    border-color: transparent rgba(0,0,0,.75) rgba(0,0,0,.75) transparent;
+}
 nav .more>.more-bubble {
-    display: none;
     top: 45px;
     right: 0;
     bottom: auto;

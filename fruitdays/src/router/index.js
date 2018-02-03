@@ -6,7 +6,7 @@ import Detail from '@/components/Detail'
 import Login from '@/components/Login'
 import User from '@/components/User'
 import Cart from '@/components/Cart'
-
+import ListTwo from '@/components/ListTwo'
 
 Vue.use(Router)
 
@@ -41,6 +41,11 @@ export default new Router({
       path: '/Cart',
       name: 'Cart',
       component: Cart
+    },
+    {
+      path: '/listtwo/:classid/:id:',
+      name: 'ListTwo',
+      component: ListTwo
     }
     
   ]

@@ -175,4 +175,7 @@ export default {
 	width: 100%;
 	height: 100%;
 }
+.icon-sousuo{
+	font-size: 20px;
+}
 </style>

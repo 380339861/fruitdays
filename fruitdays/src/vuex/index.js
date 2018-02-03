@@ -9,16 +9,16 @@ var state = {
 	goodapi:"v3/ad/homepage?connect_id=&type=0&lonlat=116.25152%2C40.11621&ad_code=110114&tab_id="
 }
 
-// 持久化：从本地取出数据
-//if(localStorage.getItem("data")) {
-//	var data = JSON.parse(localStorage.getItem("data"));
-//	state = data;
-//}
+    //持久化：从本地取出数据
+if(localStorage.getItem("data")) {
+	var data = JSON.parse(localStorage.getItem("data"));
+	state = data;
+}
 
-//function saveTolocal(state) {
-//	// 持久化：保存数据
-//	localStorage.setItem("data", JSON.stringify(state));
-//}
+function saveTolocal(state) {
+	// 持久化：保存数据
+	localStorage.setItem("data", JSON.stringify(state));
+}
 
 const mutations = {
 	setUserName: function(state, username) {

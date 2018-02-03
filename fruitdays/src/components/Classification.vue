@@ -2,26 +2,27 @@
 	<section class="container category">
 		<div id="fruitday-category">
 			<!--左侧列表索引-->
+
 			<ul class="tab">  
-				<li v-for="item in category" :data-id="item.id"  @click="active()">
+				<li ref="defau" v-for="item in category" :data-id="item.id"  @click="active()">
+
 					<router-link to="">{{item.name}}</router-link>
 				</li>
 			</ul>
 			<!--右侧列表-->
 			<div class="items">
-				<div class="item">
-					<h3>{{List_title.name}}</h3>
-					<a href="#">
+				<div class="item" v-for="item in arr">
+					<h3>{{item.class2Name.name}}</h3>
+					<router-link :to="{name : 'ListTwo',params:{classid: 310,id : 0}}">
 						全部 
 						<i class="iconfont icon-morehome"> > </i>
-					</a>
-					<dl v-for="list in List_goods">
-						<router-link to="/">
+					</router-link>
+					<dl v-for="list in item.class3Group">
+						<router-link :to="{name : 'ListTwo',params:{classid: item.class2Name.id,id : list.id}}">
 							<dt><img :src="list.class_photo"/></dt>
 							<dd>{{list.name}}</dd>
 						</router-link>
-					</dl>
-					
+					</dl>		
 				</div>
 			</div>
 			
@@ -43,14 +44,16 @@ export default{
 	data : function(){
 		return {
 			category : [],
-			List_title : [],
-			List_goods : [],
-			id : 303
+			arr : [],
+			id : 303,
+			faid : null,
+			flag : true,
 		}
 	},
 	methods : {
 		//
 		active : function(evt){
+			
 			var e = evt || window.event;
 			var target = e.target || e.srcElement;
 			var lis = target.parentNode.parentNode.children;
@@ -59,26 +62,30 @@ export default{
 			}
 			var als = target.parentNode;
 			if(als.nodeName.toUpperCase() == "LI"){
-//				console.log(target);
 				als.setAttribute("class","active");
 				this.id = als.getAttribute("data-id");
-//				console.log(als.getAttribute("data-id"));
-//				console.log(this.id);
 				this.axio();
 			}
 		},
-		axio : function(id){
+		axio : function(){
 			axios.get(`/v3/product/category_list?store_id_list=3&class_id=${this.id}`)
 		  .then((response)=>{
+		  	
+		  	console.log(response)
 		  	this.category = response.data.data.classOneGroup;
-		  	this.List_title = response.data.data.childrenList[0].class2Name;
-		  	this.List_goods = response.data.data.childrenList[0].class3Group;
-		    console.log(response.data.data.childrenList[0].class3Group);
+		  	this.arr = response.data.data.childrenList;
+		  	if(this.flag==true){
+		  		this.$nextTick(function(){
+					this.$refs.defau[0].setAttribute("class","active");
+				});
+				this.flag = false;
+		  	}
+			
 		  })
 		  .catch(function (error) {
 		    console.log(error);
 		  });
-		}
+		},
 	},
 	mounted : function(){
 		this.axio();
